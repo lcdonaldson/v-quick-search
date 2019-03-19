@@ -27,7 +27,7 @@ import VideoList from './components/VideoList';
 import VideoDetail from './components/VideoDetail';
 import Pagination from './components/Pagination';
 
-const API_KEY = 'AIzaSyD5VpzMQlEcF_IWSQcw1Ij2M3oLMpCGF-8';
+const API_KEY = 'AddYourYouTubeApiKeyHere';
 
 export default {
   name: 'App',
