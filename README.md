@@ -1,4 +1,4 @@
-# video-browser
+# Quick Search
 
 ## Project setup
 ```
