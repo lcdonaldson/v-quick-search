@@ -1,0 +1,282 @@
+<!-- Different search options -->
+<!-- <template>
+    <div class="prevNextWrapper navSkin" >
+        <div class="prev" v-if="showPrevious" @click="updatePage(currentPage + 1)"> &or; </div>
+        <div class="container">
+            <p v-for="result in visibleResults"
+            v-bind:result="result"
+            :key="result">{{result.id}}</p>
+        </div>
+        <div class="next" v-if="showNext" @click="updatePage(currentPage - 1)">&and;</div>
+    </div>
+</template>
+
+<script>
+export default {
+    // name: 'Pagination',
+    name: 'Pagination',
+    // props: ['videos', 'currentPage', 'pageSize'],
+    data() {
+        return {
+            results:[],
+            fakeData: [
+                {id: 1 },
+                {id: 2 },
+                {id: 3 },
+                {id: 4 },
+                {id: 5 },
+                {id: 6 },
+                {id: 7 },
+                {id: 8 },
+                {id: 9 },
+                {id: 10 }
+            ],
+            nextId: 13,
+            currentPage: 0,
+            pageSize: 5,
+            visibleResults: []
+        }
+    },
+    beforeMount() {
+        this.updateVisible()
+    },
+    methods: {
+        // updatePage(pageNumber) {
+        //     this.$emit('page:update', pageNumber)
+        // },
+        // totalPages() {
+        //     return Math.ceil(this.videos.length / this.pageSize);
+        // },
+        // showPrevious(){
+        //     return this.currentPage == 0 ? false : true;
+        // },
+        // showNext(){
+        //     return this.currentPage == (this.totalPages() - 1) ? false : true;
+        // },
+// -------------------------------------------------------------------------------
+
+        updatePage(pageNumber) {
+            this.currentPage = pageNumber;
+            this.updateVisible();
+        },
+        updateVisible() {
+            this.visibleResults = this.fakeData.slice(this.currentPage * this.pageSize, (this.currentPage * this.pageSize) + this.pageSize)
+            if(this.visibleResults.length == 0 && this.currentPage > 0){
+                this.updatePage(this.currentPage - 1)
+            }
+        },
+        // prev: () => { console.log('hi') },
+        // next: () => { console.log('bye') }
+    }
+}
+</script>
+<style>
+.navSkin { 
+    color: #fff;
+    font-size: 16pt;
+}
+.prevNextWrapper {
+    display: grid;
+    grid-template-columns: 0.2fr 2fr 0.2fr;
+}
+.prev,
+.next { 
+    align-self: center;
+    font-weight: bold;
+    width: 1.5em;
+    border: 2px solid #fff;
+    transform: rotate(90deg);
+}
+.next { margin-left: auto; }
+.container { 
+    display: inline-grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+</style> -->
+
+
+
+
+<!-- Alternate version for delayed search -->
+<!-- <div>
+      <label class="control-label">Search Github User</label>
+      <input type="text" class="form-control" @input="isTyping = true" v-model="searchQuery" placeholder="Type your keyword">
+    </div>
+ 
+    <div>
+      <div v-if="isLoading">
+        <span>Searching...</span>
+      </div>
+
+      <div class="videoContent">
+        <VideoDetail :video="selectedVideo"/>
+        <VideoList @videoSelect="onVideoSelect" :videos="videos"></VideoList> 
+      </div>
+
+      <ul class="">
+        <li v-for="(item, key) in searchResult"
+        v-bind:item="item"
+        :key="key">{{ item.snippet.thumbnails.default.url }}</li>
+      </ul>
+      
+    </div> -->
+    // searchUser: function(searchQuery) {
+    //   this.isLoading = true;
+    //   axios.get('https://www.googleapis.com/youtube/v3/search', {
+    //     params: {
+    //       key: API_KEY,
+    //       maxResults: 5,
+    //       nextPageToken: 'CAoQAA',
+    //       type: 'video',
+    //       part: 'snippet',
+    //       q: searchQuery
+    //     }
+    //   })
+    //     .then(response => {
+    //       this.isLoading = false;
+    //       this.searchResult = response.data.items;
+    //       this.isVideo = true;
+    //     });
+    // }
+
+
+
+<!-- ORIGINAL -->
+<!-- <template> -->
+  <!-- <div id="app"> -->
+    <!-- <div class="topCover"> -->
+      <SearchBar class="searchBar" id="myInput" @termChange="onTermChange"></SearchBar>
+      <!-- <SearchBar class="searchBar"  @termChange="onTermChange"  name="test"></SearchBar> -->
+    </div>
+
+    <div class="videoContent">
+      <VideoDetail :video="selectedVideo"/>
+      <VideoList @videoSelect="onVideoSelect" :videos="videos"></VideoList> 
+    </div>
+
+    <!-- <Pagination class="pagination" v-if="isVideo"/> -->
+
+    <div>
+      <h1>Quick Search</h1>
+    </div>
+
+  <!-- </div> -->
+<!-- </template> -->
+
+<!-- <script>
+import axios from 'axios';
+import SearchBar from './components/SearchBar';
+import VideoList from './components/VideoList';
+import VideoDetail from './components/VideoDetail';
+import Pagination from './components/Pagination';
+
+const API_KEY = 'YourYouTubeAPIKey';
+
+export default {
+  name: 'App',
+  components: {
+    SearchBar,
+    VideoList,
+    VideoDetail,
+    Pagination
+  },
+  data() {
+    return { videos: [], selectedVideo: null, isVideo: false };
+  },
+  // mounted() {
+  //   this.onTypeEnd();
+  // },
+
+  methods: {
+    onVideoSelect(video) {
+      this.selectedVideo = video;
+    },
+    // onTypeEnd() {
+    //   //setup before functions
+    //   let typingTimer;                //timer identifier
+    //   // let doneTypingInterval = 3000;  //time in ms (3 seconds)
+    //   let myInput = document.getElementById('myInput');
+
+    //   //on keyup, start the countdown
+    //   myInput.addEventListener('keyup', () => {
+
+    //       clearTimeout(typingTimer);
+    //       let a = event.target.value
+    //       if (a) {
+    //         typingTimer = setTimeout(doneTypingInterval);
+    //       }
+    //   });
+    // },
+
+    onTermChange () {
+      setInterval(this.afterPause, 3000);
+    },
+
+    async afterPause(searchTerm) {
+      // alert('hi');
+      await axios
+      .get('https://www.googleapis.com/youtube/v3/search', {
+        params: {
+          key: API_KEY,
+          maxResults: 50,
+          nextPageToken: 'CAoQAA',
+          type: 'video',
+          part: 'snippet',
+          q: searchTerm
+        }
+      })
+      .then(response => {
+        this.videos = response.data.items;
+        this.isVideo = true;
+        // data = response;
+      });
+      // return data; 
+    },
+
+  }
+}
+</script> -->
+
+<!-- <style>
+  #app {
+    text-align: center;
+    height: 100%;
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  body { 
+    margin: 0;
+    padding: 0;
+    background-color: #41b883;
+  }
+
+  h1 { color: #fff; font-size: 30pt; margin-top: 0; }
+
+  h2 {
+    position: absolute;
+    right: 5vw;
+    left: 5vw;
+    top: 10px;
+    color: #ffffff;
+  }
+
+  .topCover {
+    padding-top: 15vh;
+    background-image: url('./assets/qs1.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+
+  .videoContent { padding: 1rem; }
+  .pagination { width: 95vw; margin: 0 auto;}
+
+  @media screen and (min-width: 750px) {
+    .videoContent { display: flex; }
+  }
+</style>  -->
