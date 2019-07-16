@@ -26,7 +26,17 @@ export default {
                 {id: 7 },
                 {id: 8 },
                 {id: 9 },
-                {id: 10 }
+                {id: 10 },
+                {id: 11 },
+                {id: 12 },
+                {id: 13 },
+                {id: 14 },
+                {id: 15 },
+                {id: 16 },
+                {id: 17 },
+                {id: 18 },
+                {id: 19 },
+                {id: 20 }
             ],
             nextId: 13,
             currentPage: 0,
@@ -50,32 +60,32 @@ export default {
             }
         },
 
-        async onTermChange(searchTerm) {
-            const data = await axios
-            .get('https://www.googleapis.com/youtube/v3/search', {
-                params: {
-                    key: API_KEY,
-                    maxResults: 5,
-                    nextPageToken: 'CAoQAA',
-                    type: 'video',
-                    part: 'snippet',
-                    q: searchTerm
-                }
-            })
-            .then(response => {
-                this.videos = response.data.items;
-                this.isVideo = true;
-                data = response;
-            });
-            return data;
-        }
+        // async onTermChange(searchTerm) {
+        //     const data = await axios
+        //     .get('https://www.googleapis.com/youtube/v3/search', {
+        //         params: {
+        //             key: API_KEY,
+        //             maxResults: 5,
+        //             nextPageToken: 'CAoQAA',
+        //             type: 'video',
+        //             part: 'snippet',
+        //             q: searchTerm
+        //         }
+        //     })
+        //     .then(response => {
+        //         this.videos = response.data.items;
+        //         this.isVideo = true;
+        //         data = response;
+        //     });
+        //     return data;
+        // }
         // prev: () => { console.log('hi') },
         // next: () => { console.log('bye') }
     }
 }
 </script>
 <style>
-.navSkin { 
+/* .navSkin { 
     color: #fff;
     font-size: 16pt;
 }
@@ -95,5 +105,5 @@ export default {
 .container { 
     display: inline-grid; 
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-}
+} */
 </style>

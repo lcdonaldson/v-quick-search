@@ -10,7 +10,16 @@
       <VideoList @videoSelect="onVideoSelect" :videos="videos"></VideoList> 
     </div>
 
-    <Pagination class="pagination" v-if="isVideo"/>
+    <!-- <Pagination class="pagination" v-if="isVideo"/> -->
+    <div class="prevNextWrapper navSkin" >
+      <div class="prev" @click="updatePage(currentPage - 1)"> &or; </div>
+      <div class="container">
+          <p v-for="result in visibleResults"
+          v-bind:result="result"
+          :key="result">{{result.id}}</p>
+      </div>
+      <div class="next" @click="updatePage(currentPage + 1)">&and;</div>
+    </div>
 
     <div>
       <h1>Quick Search</h1>
@@ -25,9 +34,9 @@ import _ from 'lodash';
 import SearchBar from './components/SearchBar';
 import VideoList from './components/VideoList';
 import VideoDetail from './components/VideoDetail';
-import Pagination from './components/Pagination';
+// import Pagination from './components/Pagination';
 
-const API_KEY = 'AddYourYouTubeApiKeyHere';
+const API_KEY = 'AIzaSyD5VpzMQlEcF_IWSQcw1Ij2M3oLMpCGF-8';
 
 export default {
   name: 'App',
@@ -35,7 +44,7 @@ export default {
     SearchBar,
     VideoList,
     VideoDetail,
-    Pagination
+    // Pagination
   },
   data() {
     return { 
@@ -49,21 +58,24 @@ export default {
       // isLoading: false, 
     };
   },
-  watch: {
-    searchQuery: _.debounce(function() {
-      this.isTyping = false;
-    }, 1000),
-    isTyping: function(value) {
-      if (!value) {
-        this.searchUser(this.searchQuery);
-      }
-    }
+  beforeMount() {
+    this.updateVisible()
   },
+  // watch: {
+  //   searchQuery: _.debounce(function() {
+  //     this.isTyping = false;
+  //   }, 1000),
+  //   isTyping: function(value) {
+  //     if (!value) {
+  //       this.searchUser(this.searchQuery);
+  //     }
+  //   }
+  // },
   methods: {
     onVideoSelect(video) {
       this.selectedVideo = video;
     },
-
+  
     async onTermChange(searchTerm) {
       const data = await axios
       .get('https://www.googleapis.com/youtube/v3/search', {
@@ -75,14 +87,25 @@ export default {
               part: 'snippet',
               q: searchTerm
           }
-      })
-      .then(response => {
+      }).then(response => {
+          console.log('bzzzzz ' + JSON.stringify(response));
           this.videos = response.data.items;
           this.isVideo = true;
           data = response;
       });
       return data;
-    }
+    },
+    updatePage() {
+      // this.currentPage = pageNumber;
+      this.updateVisible();
+    },
+    updateVisible() {
+      console.log('max' + JSON.stringify(this.videos[0].id));
+      // this.visibleResults = this.maxResults.slice(this.currentPage * this.pageSize, (this.currentPage * this.pageSize) + this.pageSize)
+      // if(this.visibleResults.length == 0 && this.currentPage > 0){
+      //     this.updatePage(this.currentPage - 1)
+      // }
+    },
   }
 }
 </script>
@@ -128,6 +151,28 @@ export default {
   .pagination { 
     width: 95vw; 
     margin: 0 auto;
+  }
+
+  .navSkin { 
+    color: #fff;
+    font-size: 16pt;
+  }
+  .prevNextWrapper {
+    display: grid;
+  grid-template-columns: 0.2fr 2fr 0.2fr;
+  }
+  .prev,
+  .next { 
+    align-self: center;
+    font-weight: bold;
+    width: 1.5em;
+    border: 2px solid #fff;
+    transform: rotate(90deg);
+  }
+  .next { margin-left: auto; }
+  .container { 
+    display: inline-grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 
   @media screen and (min-width: 750px) {
