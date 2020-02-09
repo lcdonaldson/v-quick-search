@@ -31,7 +31,7 @@ export default {
 <style scoped> 
     ul { 
         padding-left: 0;
-        max-height: 420px;
+        max-height: 26.25rem;
         overflow: scroll; 
     }
 
