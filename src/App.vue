@@ -7,7 +7,7 @@
 
     <div class="videoContent">
       <VideoDetail :video="selectedVideo"/>
-      <VideoList @videoSelect="onVideoSelect" :videos="videos"></VideoList> 
+      <VideoList @videoSelect="onVideoSelect" :videos="videos"></VideoList>
     </div>
 
     <Pagination class="pagination" v-if="isVideo"/>
@@ -38,15 +38,15 @@ export default {
     Pagination
   },
   data() {
-    return { 
-      videos: [], 
-      selectedVideo: null, 
+    return {
+      videos: [],
+      selectedVideo: null,
       isVideo: false,
 
       // searchQuery: "",
       // isTyping: false,
       // searchResult: [],
-      // isLoading: false, 
+      // isLoading: false,
     };
   },
   watch: {
@@ -99,13 +99,17 @@ export default {
     background-repeat: no-repeat;
   }
 
-  body { 
+  body {
     margin: 0;
     padding: 0;
     background-color: #41b883;
   }
 
-  h1 { color: #fff; font-size: 30pt; margin-top: 0; }
+  h1 {
+    color: #fff;
+    font-size: 30pt;
+    margin-top: 0;
+ }
 
   h2 {
     position: absolute;
@@ -125,14 +129,14 @@ export default {
   }
 
   .videoContent { margin-top: 1rem; }
-  .pagination { 
-    width: 95vw; 
+  .pagination {
+    width: 95vw;
     margin: 0 auto;
   }
 
   @media screen and (min-width: 750px) {
-    .videoContent { 
-      display: flex; 
+    .videoContent {
+      display: flex;
       padding: 2rem;
     }
 
