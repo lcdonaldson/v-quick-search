@@ -23,8 +23,8 @@ export default {
         font-size: 20pt;
         font-weight: bold;
         border: none;
-        border-bottom: 2px solid #fff;
-        color: #fff;
+        border-bottom: 2px solid #ffffff;
+        color: #ffffff;
         outline: none;
         text-align: center;
         background: transparent;
