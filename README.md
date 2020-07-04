@@ -13,5 +13,5 @@ npm run serve
 Some quick notes to run the project for yourself.
 
 ### 1. You need to add your own youtube api key
-### 2. You will notice the pagination isn't working its just a placeholder
+### 2. At this stage the pagination is just a placeholder, not actually functioning.
 ### 3. The SearchBar is currently set to make an api call on every keystroke. So have fun but don't wear out your api calls. This is one of the features being developed right now.
