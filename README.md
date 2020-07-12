@@ -5,8 +5,6 @@
 npm run serve
 ```
 
-# _____________________________________________________________
-
 # This project is under development.
   The base of this project comes from following Stephen Griders vue course. However, I modify the components to have different functionality and styles.
 
