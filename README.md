@@ -6,7 +6,7 @@ npm run serve
 ```
 
 # This project is under development.
-  The base of this project comes from following Stephen Griders vue course. However, I modify the components to have different functionality and styles.
+  The base of this project comes from following Stephen Griders vue course. However, I modify some of the components to have different functionality and styles.
 
 Some quick notes to run the project for yourself.
 
