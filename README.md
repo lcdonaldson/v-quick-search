@@ -1,10 +1,5 @@
 # Quick Search
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
 ### This project is under sporadic development.
   The base of this project comes from following Stephen Griders vue course. However, I modify some of the components to have different functionality and styles.
 
