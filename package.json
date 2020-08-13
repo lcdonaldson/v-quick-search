@@ -10,7 +10,7 @@
     "dependencies": {
         "axios": "^0.18.1",
         "lodash": "^4.17.13",
-        "serialize-javascript": "^2.1.2",
+        "serialize-javascript": "^4.0.0",
         "vue": "^2.5.16"
     },
     "devDependencies": {
