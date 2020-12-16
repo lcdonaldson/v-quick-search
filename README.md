@@ -1,6 +1,6 @@
 # Quick Search
 
-### This project is under development from time to time..
+### This project is under development from time to time...
   The base of this project comes from following Stephen Griders Vue course. However, I modified some of the components to have different functionality and styles.
 
 ### Some quick notes to run the project for yourself.
