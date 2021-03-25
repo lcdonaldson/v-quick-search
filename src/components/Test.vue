@@ -18,12 +18,8 @@
 </script>
 
 <style>
-    body {
-        background-color: rgba(1, 122, 203, 0.12);
-    }
-    .hero {
-        padding: 1rem
-    } 
+    body { background-color: rgba(1, 122, 203, 0.12); }
+    .hero { padding: 1rem } 
     .heroSkin { 
         background-color: azure;
         color: antiquewhite;
