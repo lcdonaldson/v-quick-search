@@ -1,7 +1,7 @@
 # Quick Search
 
 ### This project is under development in third quarter of 2021
-  The base of this project comes from following Stephen Griders Vue course. However, I modified some of the components to have different functionality and styles.
+  The base of this project comes from following Stephen Griders Vue course. However, I modified several components to have different functionality and styles.
 
 ### Some quick notes to run the project for yourself.
 
